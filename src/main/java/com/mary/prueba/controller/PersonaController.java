@@ -45,14 +45,10 @@ public class PersonaController {
 		return ResponseEntity.status(201).body(persona);
 	}
 	
-	@PutMapping("/{id}")
-	public ResponseEntity<?> editar(@RequestBody Persona persona, @PathVariable long id) {
-		if(id == persona.getId()) {
-			service.save(persona);
-			return ResponseEntity.status(204).build();
-		} else {
-			return ResponseEntity.status(409).build();
-		}
+	@PutMapping
+	public ResponseEntity<?> editar(@RequestBody Persona persona) {
+		service.save(persona);
+		return ResponseEntity.status(204).build();
 	}
 	
 	@DeleteMapping("/{id}")
